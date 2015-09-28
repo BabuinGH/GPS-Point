@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="#0a0405"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_location" tools:context=".LocationActivity">
+
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Latitude"
+        android:id="@+id/tvLat"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:textColor="#eee8e8"
+        android:textSize="25sp"/>
+
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvDisplayLat"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/tvLat"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="#eee8e8"
+        android:textSize="25sp"
+        android:layout_alignBottom="@+id/tvLat"
+        android:background="@drawable/shape_view_border" />
+
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Longitude"
+        android:textSize="25sp"
+        android:id="@+id/tvLon"
+        android:layout_below="@+id/tvLat"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:textColor="#eee8e8"  />
+
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:id="@+id/tvDisplayLon"
+        android:layout_toRightOf="@+id/tvLon"
+        android:layout_below="@+id/tvDisplayLat"
+        android:layout_alignRight="@+id/tvDisplayLat"
+        android:layout_alignEnd="@+id/tvDisplayLat"
+        android:layout_marginTop="20dp"
+        android:textColor="#eee8e8"
+        android:background="@drawable/shape_view_border" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start GPS"
+        android:id="@+id/btStartGPS"
+        android:layout_above="@+id/btStopGPS"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="#6c6a6a" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="STOP GPS"
+        android:id="@+id/btStopGPS"
+        android:onClick="stopGPS"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/tvDisplayAlt"
+        android:layout_alignEnd="@+id/tvDisplayAlt"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="#6c6a6a"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Altitude"
+        android:textSize="25sp"
+        android:id="@+id/tvAltitude"
+        android:layout_below="@+id/tvLon"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:textColor="#eee8e8" />
+
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:id="@+id/tvDisplayAlt"
+        android:layout_below="@+id/tvDisplayLon"
+        android:layout_alignLeft="@+id/tvDisplayLon"
+        android:layout_alignStart="@+id/tvDisplayLon"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:textColor="#eee8e8"
+        android:background="@drawable/shape_view_border" />
+
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Accuracy"
+        android:textSize="25sp"
+        android:id="@+id/tvAccuracy"
+        android:layout_below="@+id/tvAltitude"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:textColor="#eee8e8" />
+
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:id="@+id/tvDisplayAcc"
+        android:layout_below="@+id/tvDisplayAlt"
+        android:layout_alignLeft="@+id/tvDisplayLat"
+        android:layout_alignStart="@+id/tvDisplayLat"
+        android:layout_marginTop="20dp"
+        android:textColor="#eee8e8"
+        android:background="@drawable/shape_view_border"
+        android:layout_above="@+id/tvSpeed"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Speed"
+        android:textSize="25sp"
+        android:id="@+id/tvSpeed"
+        android:layout_below="@+id/tvAccuracy"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:textColor="#eee8e8" />
+
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:id="@+id/tvDisplaySpeed"
+        android:layout_below="@+id/tvDisplayAcc"
+        android:layout_alignLeft="@+id/tvDisplayLat"
+        android:layout_alignStart="@+id/tvDisplayLat"
+        android:layout_marginTop="20dp"
+        android:textColor="#eee8e8"
+        android:background="@drawable/shape_view_border"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>
