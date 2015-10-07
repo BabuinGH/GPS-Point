@@ -1,11 +1,18 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        gpspointrelease {
+            keyAlias 'androidgpspoint'
+            keyPassword 'AliasGpspoint4mFC'
+            storeFile file('/Users/babusr/Documents/Android/AndroidStore/gpspoint_keystore.jks')
+            storePassword 'Gpspoint4mFC'
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion "21.1.2"
-
     defaultConfig {
-        applicationId "com.example.babusr.gpspoint"
+        applicationId "com.babusr.gpspoint"
         minSdkVersion 16
         targetSdkVersion 21
         versionCode 1
@@ -15,6 +22,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable false
+            jniDebuggable false
+            signingConfig signingConfigs.gpspointrelease
+            renderscriptDebuggable false
+            zipAlignEnabled true
         }
     }
 }

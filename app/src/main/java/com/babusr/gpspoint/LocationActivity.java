@@ -1,4 +1,4 @@
-package com.example.babusr.gpspoint;
+package com.babusr.gpspoint;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -27,6 +27,7 @@ public class LocationActivity extends AppCompatActivity {
     TextView tvDisplayAlt;
     TextView tvDisplayAcc;
     TextView tvDisplaySpeed;
+    TextView tvGpsStatus;
 
     Double lat;
     Double lon;
@@ -42,22 +43,26 @@ public class LocationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_location);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        tvGpsStatus = (TextView) findViewById(R.id.tvGpsStatus);
+        tvGpsStatus.setVisibility(View.INVISIBLE);
 
         btStartGPS = (Button) findViewById(R.id.btStartGPS);
         btStartGPS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if(stopPos == false) {
-                    Toast.makeText(LocationActivity.this, "Start GPS!!", Toast.LENGTH_SHORT).show();
+                if (!stopPos) {
                     btStartGPS.setText("Stop GPS");
+                    btStartGPS.setBackgroundColor(getResources().getColor(R.color.stop_gps));
+                    tvGpsStatus.setVisibility(View.VISIBLE);
                     findLocation();
                     stopPos = true;
-                }else if(stopPos == true){
+                } else if (stopPos) {
                     gpsStopped();
                     stopPos = false;
                     btStartGPS.setText("Start GPS");
+                    tvGpsStatus.setVisibility(View.INVISIBLE);
+                    btStartGPS.setBackgroundColor(getResources().getColor(R.color.start_gps));
                 }
 
             }
@@ -68,6 +73,7 @@ public class LocationActivity extends AppCompatActivity {
 
     public void findLocation() {
         lm = (LocationManager) getSystemService(LOCATION_SERVICE);
+
 
         listener = new LocationListener() {
             @Override
@@ -85,8 +91,13 @@ public class LocationActivity extends AppCompatActivity {
                 tvDisplayAlt.setText(Double.toString(alt) + " m");
                 tvDisplayAcc = (TextView) findViewById(R.id.tvDisplayAcc);
                 tvDisplayAcc.setText(Double.toString(acc) + " m");
-                tvDisplaySpeed = (TextView)findViewById(R.id.tvDisplaySpeed);
+                tvDisplaySpeed = (TextView) findViewById(R.id.tvDisplaySpeed);
                 tvDisplaySpeed.setText(Float.toString(speed) + " m/sec");
+
+                if (lat != null) {
+                    tvGpsStatus.setVisibility(View.INVISIBLE);
+
+                }
 
             }
 
@@ -122,10 +133,9 @@ public class LocationActivity extends AppCompatActivity {
     }
 
 
-    public void gpsStopped (){
-        Toast.makeText(this,"Stop GPS!!",Toast.LENGTH_SHORT).show();
+    public void gpsStopped() {
         lm = (LocationManager) getSystemService(LOCATION_SERVICE);
-        if(listener != null){
+        if (listener != null) {
             lm.removeUpdates(listener);
             listener = null;
         }
@@ -133,11 +143,9 @@ public class LocationActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_location, menu);
         getMenuInflater().inflate(R.menu.menu_map, menu);
         return true;
     }
@@ -149,20 +157,18 @@ public class LocationActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        switch (id){
-            case R.id.clear_history:
-                tvDisplayLat.setText(" ");
-                tvDisplayLon.setText(" ");
-                tvDisplayAlt.setText(" ");
-                tvDisplayAcc.setText(" ");
-                tvDisplaySpeed.setText(" ");
-                break;
+        switch (id) {
             case R.id.maps_settings:
-                Intent intent = new Intent(this,MapsActivity.class);
-                intent.putExtra("Latitude", lat);
-                intent.putExtra("Longitude", lon);
-                startActivity(intent);
+                if (lat != null) {
+                    Intent intent = new Intent(this, MapsActivity.class);
+                    intent.putExtra("Latitude", lat);
+                    intent.putExtra("Longitude", lon);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(this, "GPS fix not obtained!!", Toast.LENGTH_SHORT).show();
+                }
                 break;
+
         }
 
 

@@ -68,22 +68,21 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:background="#6c6a6a"
-        android:layout_alignParentBottom="true"/>
+        android:background="#156f15"
+        android:layout_alignParentBottom="true"
+        android:textColor="#faffffff" />
 
-    <!--<Button-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="STOP GPS"-->
-        <!--android:id="@+id/btStopGPS"-->
-        <!--android:onClick="stopGPS"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_alignRight="@+id/tvDisplayAlt"-->
-        <!--android:layout_alignEnd="@+id/tvDisplayAlt"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:layout_alignParentStart="true"-->
-        <!--android:background="#6c6a6a"-->
-        <!--android:layout_marginTop="5dp"/>-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Waiting for GPS Location!!"
+        android:textSize="25sp"
+        android:id="@+id/tvGpsStatus"
+        android:layout_above="@+id/btStartGPS"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="50dp"
+        android:textColor="#eee8e8" />
 
     <TextView
         android:layout_width="130dp"

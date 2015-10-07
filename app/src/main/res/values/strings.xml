@@ -1,5 +1,4 @@
 <resources>
     <string name="app_name">GPS Point</string>
-    <string name="clear_history">Clear History</string>
-    <string name="maps_settings">Goto Maps</string>
+    <string name="maps_settings">Show in Maps</string>
 </resources>

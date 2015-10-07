@@ -3,4 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="start_gps">#156f15</color>
+    <color name="stop_gps">#FFEC1920</color>
+
 </resources>
